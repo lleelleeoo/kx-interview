@@ -1,0 +1,45 @@
+{
+  "name": "kx-interview",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "lleelleeoo",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev:client & npm run dev:server && fg",
+    "dev:client": "vite",
+    "dev:server": "tsx watch ./src/server/server.ts",
+    "lint": "npm run lint:code && npm run lint:styles",
+    "lint:code": "eslint",
+    "lint:code:fix": "eslint --fix",
+    "lint:fix": "npm run lint:code:fix",
+    "lint:styles": "stylelint **/*.css",
+    "prepare": "sort-package-json && husky",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.0.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "clsx": "^2.1.1",
+    "fastify": "^5.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@stylistic/eslint-plugin": "^2.11.0",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.15.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
+    "sort-package-json": "^2.12.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0"
+  }
+}
