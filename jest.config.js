@@ -1,15 +1,28 @@
 const jestConfig = {
-    preset: "ts-jest",
-    clearMocks: true,
-    moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
-    testMatch: ["**/__tests__/**/*.+(ts|tsx|js)", "**/?(*.)+(spec|test).+(ts|tsx|js)"],
-    transform: {
-        "^.+\\.(ts|tsx)$": "ts-jest",
-    },
-    coverageProvider: "v8",
-    setupFilesAfterEnv: [
-        "./scripts/setupJest.ts"
-    ]
+    projects: [
+        {
+            displayName: "server",
+            preset: "ts-jest",
+            testEnvironment: "node",
+            clearMocks: true,
+            moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+            transform: { "^.+\\.(ts|tsx)$": "ts-jest" },
+            testMatch: ["<rootDir>/src/server/**/*.(spec|test).[jt]s?(x)"],
+        },
+        {
+            displayName: "client",
+            preset: "ts-jest",
+            testEnvironment: "jsdom",
+            clearMocks: true,
+            moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+            moduleNameMapper: { "\\.(css)$": "identity-obj-proxy" },
+            testMatch: ["<rootDir>/src/client/**/*.(spec|test).[jt]s?(x)"],
+            transform: { "^.+\\.(ts|tsx)$": "ts-jest" },
+
+        },
+    ],
 };
 
 export { jestConfig as default };
+
+
