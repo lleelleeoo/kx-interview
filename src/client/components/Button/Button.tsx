@@ -12,4 +12,12 @@ type ButtonProps = {
 };
 
 export const Button:FC<PropsWithChildren<ButtonProps>> = ({children, className, view='default', size='m', ...props}) => 
-<button className={clsx(styles.button, className, styles[view], styles[size])} {...props}>{children}</button>
+<button 
+    className={clsx(
+        styles.button, 
+        className, 
+        styles[`view-${view}`], 
+        styles[`size-${size}`]
+    )}
+    {...props}
+>{children}</button>
