@@ -1,5 +1,6 @@
 .card {
     display: grid;
+    border-radius: 4px;
     background-color: var(--surface-lv1-color);
     block-size: 170px;
     column-gap: 10px;

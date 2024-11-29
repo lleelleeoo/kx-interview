@@ -34,7 +34,7 @@ export const EmployeesPageHeader: FC<EmployeesPageHeaderProps> = ({ className, o
             <Button view="action" size="l" onClick={handleCreateEmployee} >Create +</Button>
             <div className={styles['search-wrapper']}>
                 <input type="text" className={styles['search-input']} placeholder="Type to search" onChange={({ target }) => onChangeSearchValue?.(target.value)} />
-                <select onChange={({ target }) => onChangeStatusValue?.(target.value as Employee['status'] | '')}>
+                <select className={styles['status-select']} onChange={({ target }) => onChangeStatusValue?.(target.value as Employee['status'] | '')}>
                     <option value="">All</option>
                     <option value="working">{statuses.working}</option>
                     <option value="onVacation">{statuses.onVacation}</option>

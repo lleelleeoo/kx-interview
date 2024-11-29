@@ -11,13 +11,12 @@
 .search-wrapper {
     display: flex;
     flex-grow: 1;
-    flex-wrap: wrap;
     align-items: center;
     padding: 20px;
     border-radius: 4px;
     background-color: var(--surface-lv1-color);
-    block-size: 61px;
     gap: 10px;
+    min-block-size: 61px;
 }
 
 .search-wrapper::before {
@@ -32,4 +31,25 @@
 .search-input {
     flex-grow: 1;
     order: -1;
+    border: none;
+}
+
+@media screen and (width <= 768px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input {
+        text-align: center;
+    }
+
+    .status-select {
+        text-align: center;
+    }
 }
