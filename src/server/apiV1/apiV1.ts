@@ -6,7 +6,7 @@ let nextId = 5;
 
 export const apiV1 = (fastify: FastifyInstance) => {
     fastify.get<GetEmployeesRequestParams, GetEmployeesResponse>('/employees', (req, res) => {
-        res.send(employees);
+        res.send({ employees });
     });
     
     fastify.get<{ Params: GetEmployeeRequestParams }, { Body: GetEmployeeResponse }>(
@@ -20,7 +20,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
                 return;
             }
 
-            res.send(employee);
+            res.send({ employee });
         }
     );
 
@@ -40,7 +40,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
             if (img) employee.img = img;
             if (name) employee.name = name;
 
-            res.send(employee);
+            res.send({ employee });
         }
     );
 

@@ -30,4 +30,6 @@ export interface PostEmployeeResponse {
 }
 
 export type CreateEmployeeRequestBody = Omit<Employee, 'id'>;
-export type CreateEmployeeResponse = Employee;
+export type CreateEmployeeResponse = {
+    employee: Employee;
+};
