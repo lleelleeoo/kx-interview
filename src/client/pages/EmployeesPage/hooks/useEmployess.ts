@@ -8,6 +8,7 @@ export const useEmployees = () => {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
     const [searchString, setSearchString] = useState<string>('');
+    const [filterStatus, setFilterStatus] = useState<Employee['status'] | ''>('');
 
     useEffect(() => {
         const controller = new AbortController();
@@ -28,9 +29,12 @@ export const useEmployees = () => {
     }, []);
 
     useEffect(debounce(() => {
-        const filtered = employees.filter((e) => e.name.toLowerCase().includes(searchString.toLowerCase().trim()));
+        const filtered = employees.filter(({ name, status }) =>
+            (filterStatus === '' || status === filterStatus) &&
+            name.toLowerCase().includes(searchString.toLowerCase().trim())
+    );
         setFilteredEmployees(filtered);
-    }, 300), [employees, searchString]);
+    }, 300), [employees, searchString, filterStatus]);
 
-    return { employees: filteredEmployees, setSearchString };
+    return { employees: filteredEmployees, setSearchString, setFilterStatus };
 }
