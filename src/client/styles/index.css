@@ -11,12 +11,20 @@ html {
 body {
     height: 100%;
     background-color: var(--surface-lv0-color);
+    color: var(--text-color-primary);
 }
 
 button {
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+select,
+option {
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 :root {
