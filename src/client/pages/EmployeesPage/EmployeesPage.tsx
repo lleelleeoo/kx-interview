@@ -1,13 +1,21 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { PageHeader } from "../../components/PageHeader/PageHeader"
 import { EmployeesPageHeader } from "../../components/EmployeesPageHeader/EmployeesPageHeader"
 
 import styles from './EmployeesPage.module.css';
 import { EmployeesCard } from "../../components/EmployeesCard/EmployeesCard";
 import { useEmployees } from "./hooks/useEmployess";
+import { Employee } from "../../../types/apiV1";
+import { postEmployee } from "../../endpoints/endpoints";
 
 export const EmployeesPage: React.FC = () => {
-    const { employees, setSearchString, setFilterStatus } = useEmployees();
+    const { employees, setSearchString, setFilterStatus, updateEmployee } = useEmployees();
+
+    const handleUpdateEmployeeStatus = useCallback(async ({ id, status }: Pick<Employee, 'id' | 'status'>) => {
+        const { employee } = await postEmployee({ id, status });
+
+        updateEmployee({ id }, employee);
+    }, [updateEmployee]);
 
     return (
         <>
@@ -20,7 +28,7 @@ export const EmployeesPage: React.FC = () => {
                 />
                 <div className={styles['employees-list']}>
                     {employees.map(({ id, name, img, status }) => (
-                        <EmployeesCard key={id} id={id} name={name} img={img} status={status} />
+                        <EmployeesCard key={id} id={id} name={name} img={img} status={status} handleUpdateEmployeeStatus={handleUpdateEmployeeStatus} />
                     ))}
                 </div>
             </section>

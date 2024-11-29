@@ -13,7 +13,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
         '/employees/:id',
         (req, res) => {
             const { id } = req.params;
-            const employee = employees.find((e) => e.id === Number(id));
+            const employee = employees.find((e) => e.id === id);
 
             if (!employee) {
                 res.status(404).send({ error: 'NotFound' });
@@ -28,7 +28,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
         '/employees/:id',
         (req, res) => {
             const { id } = req.params;
-            const employee = employees.find((e) => e.id === Number(id));
+            const employee = employees.find((e) => e.id === id);
             const { status, img, name } = req.body;
 
             if (!employee) {
@@ -46,7 +46,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
 
     fastify.post<{ Body: CreateEmployeeRequestBody }, { Body: CreateEmployeeResponse }>('/employees', (req, res) => {
         const employee = {
-            id: nextId++,
+            id: String(nextId++),
             ...req.body,
         };
 

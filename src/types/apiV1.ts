@@ -1,5 +1,5 @@
 export interface Employee {
-    id: number;
+    id: string;
     name: string;
     status: 'working' | 'onVacation' | 'lunchTime' | 'businessTrip';
     img: string;
@@ -19,9 +19,7 @@ export interface GetEmployeeResponse {
     employee: Employee;
 }
 
-export interface PostEmployeeRequestParams {
-    id: string;
-}
+export type PostEmployeeRequestParams = Pick<Employee, 'id'>;
 
 export type PostEmployeeRequestBody = Partial<Omit<Employee, 'id'>>;
 

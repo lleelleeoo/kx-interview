@@ -10,6 +10,10 @@ export const useEmployees = () => {
     const [searchString, setSearchString] = useState<string>('');
     const [filterStatus, setFilterStatus] = useState<Employee['status'] | ''>('');
 
+    const updateEmployee = (id: Pick<Employee, 'id'>, updates: Partial<Employee>) => {
+        setEmployees((prev) => prev.map((employee) => employee.id === id.id ? { ...employee, ...updates } : employee));
+    }
+
     useEffect(() => {
         const controller = new AbortController();
 
@@ -36,5 +40,5 @@ export const useEmployees = () => {
         setFilteredEmployees(filtered);
     }, 300), [employees, searchString, filterStatus]);
 
-    return { employees: filteredEmployees, setSearchString, setFilterStatus };
+    return { employees: filteredEmployees, setSearchString, setFilterStatus, updateEmployee };
 }
