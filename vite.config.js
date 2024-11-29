@@ -5,6 +5,9 @@ export default defineConfig({
     root: "src/client",
     plugins: [react()],
     server: {
-        proxy: { "/api": "http://localhost:3000" },
+        proxy: {
+            "/api": "http://localhost:3000",
+            "/static": "http://localhost:3000",
+        },
     },
 });

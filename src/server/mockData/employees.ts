@@ -5,24 +5,24 @@ export const employees: Employee[] = [
     id: 1,
     name: 'John',
     status: 'working',
-    img: 'example1'
+    img: '/static/example1.png'
   },
   {
     id: 2,
     name: 'Jack',
     status: 'working',
-    img: 'example2'
+    img: '/static/example2.png'
   },
   {
     id: 3,
     name: 'Sheli',
     status: 'working',
-    img: 'example3'
+    img: '/static/example3.png'
   },
   {
     id: 4,
     name: 'Eitan',
     status: 'working',
-    img: 'example4'
+    img: '/static/example4.png'
   },
 ];
