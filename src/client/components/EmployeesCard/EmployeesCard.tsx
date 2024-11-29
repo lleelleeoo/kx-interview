@@ -1,19 +1,29 @@
-import React from "react";
+import React, { FC } from "react";
 
 import styles from './EmployeesCard.module.css';
+import { Employee } from "../../../types/apiV1";
 
-export const EmployeesCard: React.FC = () => 
+const statuses: Record<Employee['status'], string> = {
+    working: 'Working',
+    onVacation: 'On vacation',
+    businessTrip: 'Business trip',
+    lunchTime: 'Lunch time'
+};
+
+type EmployeesCardProps = Employee & {}
+
+export const EmployeesCard: FC<EmployeesCardProps> = ({ name, status, img, id }) => 
 <div className={styles.card}>
-    <div className={styles.picture} />
-    <div className={styles.name}>Johana Levi</div>
+    <div className={styles.picture} style={{backgroundImage: `url(${img})`}}/>
+    <div className={styles.name}>{name}</div>
     {/* Status. May be decoupled at standalone component */}
     <div className={styles['status-wrapper']}>
-        <span className={styles.status} >Working</span>   
-        <select className={styles.select}>
-            <option className={styles.option} value="working">Working</option>
-            <option className={styles.option} value="onVacation">On vacation</option>
-            <option className={styles.option} value="businessTrip">Business trip</option>
-            <option className={styles.option} value="lunchTime">Lunch time</option>
+        <span className={styles.status} >{statuses[status]}</span>   
+        <select className={styles.select} defaultValue={status}>
+            <option className={styles.option} value="working">{statuses.working}</option>
+            <option className={styles.option} value="onVacation">{statuses.onVacation}</option>
+            <option className={styles.option} value="businessTrip">{statuses.businessTrip}</option>
+            <option className={styles.option} value="lunchTime">{statuses.lunchTime}</option>
         </select>
     </div>
 </div>
