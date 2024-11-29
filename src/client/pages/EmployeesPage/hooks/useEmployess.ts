@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 
 import { Employee } from "../../../../types/apiV1";
@@ -13,6 +13,15 @@ export const useEmployees = () => {
     const updateEmployee = (id: Pick<Employee, 'id'>, updates: Partial<Employee>) => {
         setEmployees((prev) => prev.map((employee) => employee.id === id.id ? { ...employee, ...updates } : employee));
     }
+
+    const createEmployee = useCallback((newEmployee: Employee) => {
+        setEmployees((prev) => {
+            const existingEmployee = prev.find(({ id }) => id === newEmployee.id);
+            if (existingEmployee) throw new Error('Employee already exists');
+
+            return [...prev, { ...newEmployee }];
+        });
+    }, [setEmployees]);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -40,5 +49,5 @@ export const useEmployees = () => {
         setFilteredEmployees(filtered);
     }, 300), [employees, searchString, filterStatus]);
 
-    return { employees: filteredEmployees, setSearchString, setFilterStatus, updateEmployee };
+    return { employees: filteredEmployees, setSearchString, setFilterStatus, updateEmployee, createEmployee };
 }

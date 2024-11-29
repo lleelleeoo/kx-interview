@@ -9,7 +9,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
         res.send({ employees });
     });
     
-    fastify.get<{ Params: GetEmployeeRequestParams }, { Body: GetEmployeeResponse }>(
+    fastify.get<{ Params: GetEmployeeRequestParams }, GetEmployeeResponse>(
         '/employees/:id',
         (req, res) => {
             const { id } = req.params;
@@ -44,7 +44,7 @@ export const apiV1 = (fastify: FastifyInstance) => {
         }
     );
 
-    fastify.post<{ Body: CreateEmployeeRequestBody }, { Body: CreateEmployeeResponse }>('/employees', (req, res) => {
+    fastify.post<{ Body: CreateEmployeeRequestBody }, CreateEmployeeResponse>('/employees', (req, res) => {
         const employee = {
             id: String(nextId++),
             ...req.body,

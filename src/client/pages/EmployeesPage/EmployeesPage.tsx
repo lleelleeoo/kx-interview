@@ -9,7 +9,7 @@ import { Employee } from "../../../types/apiV1";
 import { postEmployee } from "../../endpoints/endpoints";
 
 export const EmployeesPage: React.FC = () => {
-    const { employees, setSearchString, setFilterStatus, updateEmployee } = useEmployees();
+    const { employees, setSearchString, setFilterStatus, updateEmployee, createEmployee } = useEmployees();
 
     const handleUpdateEmployeeStatus = useCallback(async ({ id, status }: Pick<Employee, 'id' | 'status'>) => {
         const { employee } = await postEmployee({ id, status });
@@ -25,6 +25,7 @@ export const EmployeesPage: React.FC = () => {
                     className={styles['employees-page-header']}
                     onChangeSearchValue={setSearchString}
                     onChangeStatusValue={setFilterStatus}
+                    onEmployeeCreated={createEmployee}
                 />
                 <div className={styles['employees-list']}>
                     {employees.map(({ id, name, img, status }) => (
