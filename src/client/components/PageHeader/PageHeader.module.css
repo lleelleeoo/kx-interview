@@ -1,0 +1,20 @@
+.header {
+    background-color: var(--surface-lv1-color);
+    padding-block: 12px;
+    padding-inline: 12px;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-inline: auto;
+    max-inline-size: 1320px;
+}
+
+.logo {
+    color: var(--brand-color);
+    font-size: 24px;
+    font-weight: 600;
+}

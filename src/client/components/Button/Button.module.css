@@ -1,0 +1,33 @@
+.button {
+    border-radius: 4px;
+    transition: box-shadow 300ms ease;
+
+}
+
+.view-default {
+    border: 1px solid var(--brand-color);
+    color: var(--brand-color);
+}
+
+.view-action {
+    background-color: var(--brand-color);
+    color: var(--surface-lv1-color);
+}
+
+.size-m {
+    font-size: 13px;
+    letter-spacing: 1.3px;
+    padding-block: 7px;
+    padding-inline: 28px;
+}
+
+.size-l {
+    font-size: 18px;
+    letter-spacing: 1.6px;
+    padding-block: 20px;
+    padding-inline: 38px;
+}
+
+.button:hover {
+    box-shadow: 0 1px 2px var(--brand-color);
+}
