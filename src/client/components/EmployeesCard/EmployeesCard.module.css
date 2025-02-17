@@ -1,0 +1,83 @@
+.card {
+    display: grid;
+    border-radius: 4px;
+    background-color: var(--surface-lv1-color);
+    block-size: 170px;
+    column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    inline-size: 315px;
+    padding-block: 25px;
+    padding-inline: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 1px 2px var(--brand-color);
+}
+
+
+.picture {
+    border-radius: 50%;
+    background-color: var(--brand-color-shadow);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    block-size: 120px;
+    grid-column: 1;
+    grid-row: 1 / 4;
+    inline-size: 120px;
+}
+
+.name {
+    align-self: end;
+    font-size: 16px;
+    grid-column: 2;
+    grid-row: 2;
+    letter-spacing: 0.7px;;
+}
+
+/* Status. May be decoupled at standalone component */
+.status-wrapper {
+    position: relative;
+    align-self: end;
+    border-block-end: 1px solid var(--divider-color);
+    grid-column: 2;
+    grid-row: 3;
+    padding-inline-start: 16px;
+} 
+
+.status {
+    appearance:none;
+    font-size: 11px;
+}
+
+.select {
+    position: absolute;
+    appearance:none;
+    cursor: pointer;
+    inset: 0;
+    opacity: 0;
+}
+
+.status-wrapper::before {
+    position: absolute;
+    display: block;
+    color: green;
+    content: '⚪︎';
+    inset-inline: 0;
+}
+
+.status-wrapper::after {
+    position: absolute;
+    display: block;
+    border-block-end: var(--border-size) solid var(--divider-color);
+    border-block-start: var(--border-size) solid transparent;
+    border-inline-end: var(--border-size) solid var(--divider-color);
+    border-inline-start: var(--border-size) solid transparent;
+    content: '';
+    inset-block-start: 8px;
+    inset-inline-end: 5px;
+    transform: rotate(45deg);
+
+    --border-size: 3.5px;
+}
